@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const clean = require('./modules/clean');
 const js = require('./modules/js');
+const babel = require('./modules/babel');
 const eslint = require('./modules/eslint');
 const json = require('./modules/json');
 const html = require('./modules/html');
@@ -29,7 +30,7 @@ module.exports = () => {
   return merge(
     common,
     clean(),
-    js({ src, addons: [eslint] }),
+    js({ src, addons: [babel, eslint] }),
     json(),
     html({ src, entries: entry }),
   );
