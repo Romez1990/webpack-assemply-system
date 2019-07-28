@@ -1,3 +1,5 @@
+import './style';
+
 console.log('this is the index page');
 
 function join(...strings: string[]): string {

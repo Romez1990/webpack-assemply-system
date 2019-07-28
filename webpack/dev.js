@@ -6,6 +6,7 @@ const watch = require('./modules/watch');
 const devServer = require('./modules/devServer');
 const html = require('./modules/html');
 const pug = require('./modules/pug');
+const css = require('./modules/css');
 
 const { entry, sourceDirectory: src } = require('./var');
 
@@ -16,4 +17,5 @@ module.exports = merge(
   watch(100),
   devServer(),
   html({ src, entries: entry, addons: [pug], pretty: true }),
+  css({ src }),
 );

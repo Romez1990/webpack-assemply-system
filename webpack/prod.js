@@ -4,6 +4,7 @@ const mode = require('./modules/mode');
 const minifyJS = require('./modules/minifyJS');
 const html = require('./modules/html');
 const pug = require('./modules/pug');
+const css = require('./modules/css');
 
 const { entry, sourceDirectory: src } = require('./var');
 
@@ -12,4 +13,5 @@ module.exports = merge(
   mode('production'),
   minifyJS(),
   html({ src, entries: entry, addons: [pug] }),
+  css({ src }),
 );
