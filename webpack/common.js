@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const clean = require('./modules/clean');
 const js = require('./modules/js');
 const eslint = require('./modules/eslint');
 const html = require('./modules/html');
@@ -26,6 +27,7 @@ module.exports = () => {
 
   return merge(
     common,
+    clean(),
     js({ src, addons: [eslint] }),
     html({ src, entries: entry }),
   );
