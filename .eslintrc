@@ -45,10 +45,6 @@
       "multi-or-nest",
       "consistent"
     ],
-    "operator-linebreak": [
-      "error",
-      "after"
-    ],
     "nonblock-statement-body-position": [
       "off"
     ],

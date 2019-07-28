@@ -8,6 +8,7 @@ const html = require('./modules/html');
 const pug = require('./modules/pug');
 const css = require('./modules/css');
 const stylus = require('./modules/stylus');
+const postcss = require('./modules/postcss');
 
 const {
   entry,
@@ -26,7 +27,7 @@ module.exports = merge(
   html({ src, entries: entry, addons: [pug], pretty: true }),
   css({
     src,
-    addons: [stylus],
+    addons: [postcss, stylus],
     extract: { enable: extract, subdirectories, hash },
     sourceMap: true,
   }),
