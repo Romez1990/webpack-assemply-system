@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "ISC",
   "scripts": {
-    "start": "webpack --config webpack/dev.js",
+    "serve": "webpack-dev-server --config webpack/dev.js",
     "build": "webpack --config webpack/prod.js",
     "lint": "eslint --fix ."
   },
@@ -31,6 +31,7 @@
     "prettier": "^1.18.2",
     "webpack": "^4.39.0",
     "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
     "webpack-merge": "^4.2.1"
   }
 }
