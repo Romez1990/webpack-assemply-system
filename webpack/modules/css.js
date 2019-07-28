@@ -17,7 +17,7 @@ function resolveExtracting(plugins, extract) {
   return 'style';
 }
 
-module.exports = ({ src, extract }) => {
+module.exports = ({ src, extract, sourceMap = false }) => {
   const plugins = [];
   const resolve = {
     extensions: ['.css'],
@@ -27,7 +27,15 @@ module.exports = ({ src, extract }) => {
     {
       test: /\.css$/,
       include: src,
-      use: [resolveExtracting(plugins, extract), 'css'],
+      use: [
+        resolveExtracting(plugins, extract),
+        {
+          loader: 'css',
+          options: {
+            sourceMap,
+          },
+        },
+      ],
     },
   ];
 

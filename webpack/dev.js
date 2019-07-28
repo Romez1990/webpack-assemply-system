@@ -22,5 +22,5 @@ module.exports = merge(
   watch(100),
   devServer(),
   html({ src, entries: entry, addons: [pug], pretty: true }),
-  css({ src, extract: { enable: extract, subdirectories } }),
+  css({ src, extract: { enable: extract, subdirectories }, sourceMap: true }),
 );
