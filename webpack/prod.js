@@ -21,6 +21,7 @@ module.exports = merge(
   html({ src, entries: entry, addons: [pug] }),
   css({
     src,
+    addons: [],
     extract: { enable: extract, subdirectories, hash },
   }),
 );

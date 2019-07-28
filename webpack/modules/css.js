@@ -1,5 +1,6 @@
 const path = require('path');
 const { applyHash } = require('./hash');
+const { applyAddons, patchRules } = require('./rules');
 
 function resolveExtracting(plugins, extract) {
   if (extract.enable) {
@@ -18,27 +19,36 @@ function resolveExtracting(plugins, extract) {
   return 'style';
 }
 
-module.exports = ({ src, extract, sourceMap = false }) => {
+module.exports = ({ src, addons = [], extract, sourceMap = false }) => {
   const plugins = [];
   const resolve = {
     extensions: ['.css'],
   };
 
-  const rules = [
+  const initialLoaders = [
+    resolveExtracting(plugins, extract),
     {
-      test: /\.css$/,
-      include: src,
-      use: [
-        resolveExtracting(plugins, extract),
-        {
-          loader: 'css',
-          options: {
-            sourceMap,
-          },
-        },
-      ],
+      loader: 'css',
+      options: {
+        sourceMap,
+      },
     },
   ];
+  const initialRules = [
+    {
+      test: /\.css$/,
+      use: initialLoaders,
+    },
+  ];
+
+  const rules = applyAddons({
+    addons,
+    resolve,
+    initialRules,
+    initialLoaders,
+    options: { sourceMap },
+  });
+  patchRules({ rules, src });
 
   return { resolve, plugins, module: { rules } };
 };
