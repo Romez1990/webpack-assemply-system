@@ -1,14 +1,15 @@
 const path = require('path');
 
-const subdirectories = false;
-const src = path.join(__dirname, 'src');
-const dist = path.join(__dirname, 'dist');
+const {
+  subdirectories,
+  sourceDirectory: src,
+  distributionDirectory: dist,
+  entry,
+} = require('./webpack/var');
 
 module.exports = {
   context: src,
-  entry: {
-    index: './index',
-  },
+  entry,
   output: {
     path: dist,
     filename: path.join(subdirectories ? 'js' : '', '[name].js'),
