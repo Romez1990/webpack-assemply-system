@@ -1,5 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
+const js = require('./modules/js');
 const html = require('./modules/html');
 
 const {
@@ -22,5 +23,5 @@ module.exports = () => {
     },
   };
 
-  return merge(common, html({ src, entries: entry }));
+  return merge(common, js({ src }), html({ src, entries: entry }));
 };
