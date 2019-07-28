@@ -6,12 +6,17 @@ const html = require('./modules/html');
 const pug = require('./modules/pug');
 const css = require('./modules/css');
 
-const { entry, sourceDirectory: src } = require('./var');
+const {
+  entry,
+  sourceDirectory: src,
+  subdirectories,
+  cssExtracting: { prod: extract },
+} = require('./var');
 
 module.exports = merge(
   common(),
   mode('production'),
   minifyJS(),
   html({ src, entries: entry, addons: [pug] }),
-  css({ src }),
+  css({ src, extract: { enable: extract, subdirectories } }),
 );

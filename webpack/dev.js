@@ -8,7 +8,12 @@ const html = require('./modules/html');
 const pug = require('./modules/pug');
 const css = require('./modules/css');
 
-const { entry, sourceDirectory: src } = require('./var');
+const {
+  entry,
+  sourceDirectory: src,
+  subdirectories,
+  cssExtracting: { dev: extract },
+} = require('./var');
 
 module.exports = merge(
   common(),
@@ -17,5 +22,5 @@ module.exports = merge(
   watch(100),
   devServer(),
   html({ src, entries: entry, addons: [pug], pretty: true }),
-  css({ src }),
+  css({ src, extract: { enable: extract, subdirectories } }),
 );
