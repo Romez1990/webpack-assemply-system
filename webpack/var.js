@@ -11,6 +11,10 @@ const config = {
     dev: false,
     prod: true,
   },
+  hashing: {
+    dev: false,
+    prod: 'filename',
+  },
 };
 
 config.sourceDirectory = path.join(__dirname, '..', config.sourceDirectory);

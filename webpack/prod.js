@@ -11,12 +11,16 @@ const {
   sourceDirectory: src,
   subdirectories,
   cssExtracting: { prod: extract },
+  hashing: { prod: hash },
 } = require('./var');
 
 module.exports = merge(
-  common(),
+  common({ hash }),
   mode('production'),
   minifyJS(),
   html({ src, entries: entry, addons: [pug] }),
-  css({ src, extract: { enable: extract, subdirectories } }),
+  css({
+    src,
+    extract: { enable: extract, subdirectories, hash },
+  }),
 );

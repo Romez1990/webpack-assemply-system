@@ -13,14 +13,19 @@ const {
   sourceDirectory: src,
   subdirectories,
   cssExtracting: { dev: extract },
+  hashing: { dev: hash },
 } = require('./var');
 
 module.exports = merge(
-  common(),
+  common({ hash }),
   mode('development'),
   devtool('inline-cheap-module-source-map'),
   watch(100),
   devServer(),
   html({ src, entries: entry, addons: [pug], pretty: true }),
-  css({ src, extract: { enable: extract, subdirectories }, sourceMap: true }),
+  css({
+    src,
+    extract: { enable: extract, subdirectories, hash },
+    sourceMap: true,
+  }),
 );

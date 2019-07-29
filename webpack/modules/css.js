@@ -1,4 +1,5 @@
 const path = require('path');
+const { applyHash } = require('./hash');
 
 function resolveExtracting(plugins, extract) {
   if (extract.enable) {
@@ -7,7 +8,7 @@ function resolveExtracting(plugins, extract) {
       new MiniCssExtractPlugin({
         filename: path.join(
           extract.subdirectories ? 'css' : '',
-          '[name].css',
+          applyHash('[name]', 'css', '[contenthash]', extract.hash),
         ),
       }),
     );
