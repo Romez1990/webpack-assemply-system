@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "webpack-dev-server --config webpack/dev.js",
     "build": "webpack --config webpack/prod.js",
-    "lint": "eslint --fix ."
+    "lint": "eslint --ext .js,.ts --fix ."
   },
   "husky": {
     "hooks": {
@@ -14,6 +14,10 @@
   },
   "lint-staged": {
     "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.ts": [
       "eslint --fix",
       "git add"
     ]
@@ -27,6 +31,8 @@
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/runtime": "^7.5.5",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "eslint": "^6.1.0",
@@ -39,6 +45,8 @@
     "husky": "^3.0.2",
     "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.39.0",
     "webpack-cli": "^3.3.6",

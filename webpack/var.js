@@ -2,7 +2,7 @@ const path = require('path');
 
 const config = {
   entry: {
-    index: './index',
+    index: './index/index.ts',
   },
   sourceDirectory: 'src',
   distributionDirectory: 'dist',
