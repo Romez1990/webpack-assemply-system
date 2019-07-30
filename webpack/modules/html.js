@@ -2,10 +2,11 @@ const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const { applyAddons } = require('./rules');
 
-module.exports = ({ src, entries, addons = [] }) => {
+module.exports = ({ src, entries, addons = [], pretty = false }) => {
   const plugins = [];
   const options = {
     type: 'html',
+    pretty,
   };
 
   const rules = applyAddons({ addons, options });
