@@ -4,6 +4,9 @@ const mode = require('./modules/mode');
 const devtool = require('./modules/devtool');
 const watch = require('./modules/watch');
 const devServer = require('./modules/devServer');
+const html = require('./modules/html');
+
+const { entry, sourceDirectory: src } = require('./var');
 
 module.exports = merge(
   common(),
@@ -11,4 +14,5 @@ module.exports = merge(
   devtool('inline-cheap-module-source-map'),
   watch(100),
   devServer(),
+  html({ src, entries: entry, addons: [] }),
 );

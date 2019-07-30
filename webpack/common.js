@@ -6,7 +6,6 @@ const babel = require('./modules/babel');
 const ts = require('./modules/ts');
 const eslint = require('./modules/eslint');
 const json = require('./modules/json');
-const html = require('./modules/html');
 
 const {
   entry,
@@ -33,6 +32,5 @@ module.exports = () => {
     clean(),
     js({ src, addons: [babel, ts, eslint] }),
     json(),
-    html({ src, entries: entry }),
   );
 };
