@@ -11,6 +11,7 @@ const stylus = require('./modules/stylus');
 const postcss = require('./modules/postcss');
 const file = require('./modules/file');
 const img = require('./modules/img');
+const font = require('./modules/font');
 
 const {
   entry,
@@ -33,5 +34,5 @@ module.exports = merge(
     extract: { enable: extract, subdirectories, hash },
     sourceMap: true,
   }),
-  file({ addons: [img], hash }),
+  file({ addons: [img, font], hash }),
 );
