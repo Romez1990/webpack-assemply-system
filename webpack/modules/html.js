@@ -9,7 +9,14 @@ module.exports = ({ src, entries, addons = [], pretty = false }) => {
     pretty,
   };
 
-  const rules = applyAddons({ addons, options });
+  const initialRules = [
+    {
+      test: /\.html$/,
+      use: 'html',
+    },
+  ];
+
+  const rules = applyAddons({ addons, initialRules, options });
 
   Object.keys(entries).forEach(entry => {
     plugins.push(
