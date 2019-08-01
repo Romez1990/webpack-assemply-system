@@ -15,7 +15,7 @@ module.exports = ({ src, entries, addons = [], pretty = false }) => {
     plugins.push(
       new HtmlPlugin({
         filename: `${entry}.html`,
-        chunks: [entry],
+        chunks: ['vendors', entry],
         template: path.join(src, entry, `template.${options.type}`),
       }),
     );

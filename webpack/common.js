@@ -2,6 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const { applyHash } = require('./modules/hash');
 const clean = require('./modules/clean');
+const splitChunks = require('./modules/splitChucks');
 const js = require('./modules/js');
 const babel = require('./modules/babel');
 const ts = require('./modules/ts');
@@ -34,6 +35,7 @@ module.exports = ({ hash } = {}) => {
   return merge(
     common,
     clean(),
+    splitChunks(),
     js({ src, addons: [babel, ts, eslint] }),
     json(),
   );
