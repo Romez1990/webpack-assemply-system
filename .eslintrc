@@ -6,6 +6,9 @@
   "extends": [
     "airbnb-base"
   ],
+  "plugins": [
+    "prettier"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
@@ -87,6 +90,7 @@
     ],
     "global-require": [
       "off"
-    ]
+    ],
+    "prettier/prettier": "error"
   }
 }
